@@ -1,6 +1,10 @@
-- improve dependency structure
-- implement code coverage
-- increase spec coverage
-- transactions have dates
-- transactions can be recurring
-- account balance can be calculated by date
+- [ ] implement ROM db layer
+- [ ] improve dependency structure
+- [ ] implement code coverage
+- [ ] increase spec coverage to 90%
+- [X] transactions have dates
+- [X] transactions can be recurring
+- [ ] account balance can be calculated by date
+  - [ ] by future date
+- [ ] ruby web application
+- [ ] mobile front end application
