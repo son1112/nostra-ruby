@@ -1,4 +1,4 @@
-- [ ] implement ROM db layer
+- [ ] implement [[./ROM.org][ROM]] db layer
 - [ ] improve dependency structure
 - [ ] implement code coverage
 - [ ] increase spec coverage to 90%

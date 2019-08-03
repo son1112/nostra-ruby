@@ -1,0 +1,31 @@
+
+* Create a database
+
+  https://bitbucket.org/ged/ruby-pg/wiki/Home
+
+  - [X] add to [[./Gemfile]]
+  - [X] install on system
+    https://wiki.archlinux.org/index.php/PostgreSQL
+    http://zetcode.com/db/postgresqlruby/
+  - [ ] configure application
+    [[./config/database.yml]]
+
+* References
+
+https://rom-rb.org/
+
+Ruby Object Mapper is an open-source persistence and mapping toolkit for Ruby built for speed and simplicity.
+
+https://rom-rb.org/5.0/learn/
+
+Ruby Object Mapper (ROM) is a fast ruby persistence library with the goal of providing powerful object mapping capabilities without limiting the full power of the underlying datastore.
+
+More specifically, ROM exists to:
+
+Isolate the application from persistence details
+Provide minimum infrastructure for mapping and persistence
+Provide shared abstractions for lower-level components
+Provide simple use of power features offered by the datastore
+
+https://rom-rb.org/5.0/guides/sql-quick-start/connecting-to-existing-database/
+
