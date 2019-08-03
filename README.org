@@ -1,0 +1,30 @@
+* NOSTRA
+
+  *Nostra* is intended to be a simple budgeting application for keeping track of
+  financial accounts and transactions, both one-time and recurring... with one 
+  very useful feature: /balance projection/. 
+
+  Over the last handful of years, I started to actually care about my own finances
+  and became obsessed with budgeting and absolutely cannot keep from recording
+  every single transaction. I have used just about every application under the sun,
+  and have narrowed down to primarily using an Android app called 1Money. It is
+  great for keeping track of my finances, but when it comes to calculating the 
+  coming months balances, out comes the calculator. I make many decisions based
+  on what the next month's finances will look like, but being a very manual
+  process, it becomes quite tedious to go 2 months out, 3 months, and so on.
+
+  Nostra aims to do the calculation for me, taking in to account current balances
+  and recurring transactions, projecting by any given date, what an account's 
+  balance will be. 
+
+  Currently, the basic functions of account and transaction (one-time and recurring)
+  creation, and account balance calculation are implemented, but the calculation
+  with regards to recurring future transactions needs work. I am attempting to 
+  utilize ROM to manage a database, but this is still in infancy.
+
+** Roadmap  
+
+   Please see [[./BACKLOG.org]] for general dumping grounds
+
+   - Implement db using ROM
+   - Ability to project future balances, taking in to account recurring transactions

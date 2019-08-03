@@ -1,0 +1,6 @@
+- improve dependency structure
+- implement code coverage
+- increase spec coverage
+- transactions have dates
+- transactions can be recurring
+- account balance can be calculated by date
