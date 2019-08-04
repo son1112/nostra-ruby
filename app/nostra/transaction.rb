@@ -22,4 +22,7 @@ module Nostra
 
   class Income < Transaction
   end
+
+  class Transfer < Transaction
+  end
 end

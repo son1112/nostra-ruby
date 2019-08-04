@@ -4,7 +4,7 @@ module Nostra
   module DateHelper
     def parse_date(date)
       return date if date.is_a?(Date)
-      # return Date.today unless date_array
+      return Date.strptime(date, "%m/%d/%Y")
 
       year, month, day = date[0], date[1], date[2]
       date_string = date.join('-')
