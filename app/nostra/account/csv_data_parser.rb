@@ -15,12 +15,14 @@ module Nostra
       transaction_rows.each do |transaction|
         fields = fields_for_transaction(transaction)
 
+        # NOTE: amount_1 is what we want for the amount
+        # I'm not sure what amount_2 is in 1Money, but they don't seem to differ
         transaction_data =   {
           date: fields[:date],
           type: fields[:type].downcase.to_sym,
           from_account: fields[:from_account],
           to_account: fields[:to_account],
-          amount_1: fields[:amount_1],
+          amount: fields[:amount_1],
           amount_2: fields[:amount_2],
           notes: fields[:notes]
         }
