@@ -20,8 +20,8 @@ RSpec.describe Nostra::CSVDataParser do
     expect(subject[0][:from_account]).to eql("Chime")
   end
   # TODO: to_account can be a category, figure out how to differentiate a transfer from a category?
-  it 'has nil to_account' do
-    expect(subject[0][:to_account]).to be_nil
+  it 'has a to_account' do
+    expect(subject[0][:to_account]).to eql("Alcohol")
   end
   it 'has a category' do
     expect(subject[0][:category]).to eql("Alcohol")

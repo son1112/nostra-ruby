@@ -13,36 +13,20 @@ module Nostra
       transactions_data = []
 
       transaction_rows.each do |transaction|
-        fields = transaction.split(',')
+        fields = fields_for_transaction(transaction)
 
-        date = fields[0]
-        type = fields[1]
-        from_account = fields[2]
-        to_account = fields[3]
-        amount_1 = fields[4]
-        amount_2 = fields[6]
-        notes = fields[9]
+        transaction_data =   {
+          date: fields[:date],
+          type: fields[:type].downcase.to_sym,
+          from_account: fields[:from_account],
+          to_account: fields[:to_account],
+          amount_1: fields[:amount_1],
+          amount_2: fields[:amount_2],
+          notes: fields[:notes]
+        }
 
-        transaction_data = if type == "Transfer"
-                             {
-                               date: date,
-                               type: type.downcase.to_sym,
-                               from_account: from_account,
-                               to_account: to_account,
-                               amount_1: amount_1,
-                               amount_2: amount_2,
-                               notes: notes
-                             }
-                           else
-                             {
-                               date: date,
-                               type: type.downcase.to_sym,
-                               from_account: from_account,
-                               category: to_account,
-                               amount_1: amount_1,
-                               amount_2: amount_2,
-                               notes: notes
-                             }
+        unless fields[:type] == "Transfer"
+          transaction_data.merge!({category: fields[:to_account]})
         end
 
         transactions_data << transaction_data
@@ -66,6 +50,28 @@ module Nostra
       end
 
       transaction_rows
+    end
+
+    def self.fields_for_transaction(transaction_string)
+      fields = transaction_string.split(',')
+
+      date = fields[0]
+      type = fields[1]
+      from_account = fields[2]
+      to_account = fields[3]
+      amount_1 = fields[4]
+      amount_2 = fields[6]
+      notes = fields[9]
+
+      {
+        date: date,
+        type: type,
+        from_account: from_account,
+        to_account: to_account,
+        amount_1: amount_1,
+        amount_2: amount_2,
+        notes: notes
+      }
     end
   end
 end
