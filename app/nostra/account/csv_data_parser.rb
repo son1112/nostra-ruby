@@ -52,8 +52,9 @@ module Nostra
     end
 
     def self.strip_bom_characters(csv_file)
+      bom_chars = "\xEF\xBB\xBF"
       csv_string = File.read(csv_file).force_encoding("UTF-8").gsub("\"", "")
-      csv_string.gsub("\xEF\xBB\xBF".force_encoding("UTF-8"), '').split("\n")
+      csv_string.gsub(bom_chars.force_encoding("UTF-8"), '').split("\n")
     end
 
     def self.collect_transactions(csv_data)
