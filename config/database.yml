@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: nostra-ruby-development
+  pool: 5
+  username: nostra-dev
+  password: password
+
+# TODO: add production
