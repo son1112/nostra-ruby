@@ -21,7 +21,7 @@ module Nostra
       when :transfer
         add_transfer(transaction_data)
       else
-        raise "unsupported transaction type #{transaction_type}!"
+        puts "Unsupported transaction type #{transaction_type}!"
       end
     end
 
