@@ -10,7 +10,7 @@ module Nostra
       csv_data = strip_bom_characters(csv_file)
       transaction_rows = collect_transactions(csv_data)[1..-1]
 
-      transactions_data = []
+      data_for_transactions = []
 
       transaction_rows.each do |transaction|
         fields = fields_for_transaction(transaction)
@@ -31,10 +31,10 @@ module Nostra
           transaction_data.merge!({category: fields[:to_account]})
         end
 
-        transactions_data << transaction_data
+        data_for_transactions << transaction_data
       end
 
-      transactions_data
+      data_for_transactions
     end
 
     def self.strip_bom_characters(csv_file)
@@ -65,6 +65,7 @@ module Nostra
       amount_2 = fields[6]
       notes = fields[9]
 
+      # TODO: implement dry/rom structs
       {
         date: date,
         type: type,
