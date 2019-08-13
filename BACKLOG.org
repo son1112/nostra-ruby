@@ -8,3 +8,6 @@
   - [ ] by future date
 - [ ] ruby web application
 - [ ] mobile front end application
+- [ ] import accounts and transactions by csv
+- [ ] add rubocop linting
+  

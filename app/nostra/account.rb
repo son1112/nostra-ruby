@@ -12,8 +12,9 @@ module Nostra
     include Nostra::AccountHelper
     include Nostra::DateHelper
 
-    def initialize
+    def initialize(name = 'unamed account')
       @transactions ||= []
+      @name = name
       @date = Date.today
     end
 
