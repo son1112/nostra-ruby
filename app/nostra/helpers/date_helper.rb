@@ -2,9 +2,9 @@ require 'date'
 
 module Nostra
   module DateHelper
-    def parse_date(date)
+    def self.parse_date(date)
       return date if date.is_a?(Date)
-      return Date.strptime(date, "%m/%d/%Y")
+      return Date.strptime(date, "%m/%d/%y")
 
       year, month, day = date[0], date[1], date[2]
       date_string = date.join('-')
