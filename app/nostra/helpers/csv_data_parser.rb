@@ -1,6 +1,11 @@
+require 'bigdecimal'
+require_relative './date_helper.rb'
+require_relative './account/account_helper.rb'
+
 module Nostra
   module CSVDataParser
-    def self.transactions(csv_file)
+    def self.transactions(csv_file_multipart_hash)
+      csv_file = csv_file_multipart_hash[:tempfile].open
       transactions_data = parse_csv_data(csv_file)
     end
 
@@ -15,19 +20,18 @@ module Nostra
       transaction_rows.each do |transaction|
         fields = fields_for_transaction(transaction)
 
-        # NOTE: amount_1 is what we want for the amount
-        # I'm not sure what amount_2 is in 1Money, but they don't seem to differ
         transaction_data =   {
-          date: fields[:date],
-          type: fields[:type].downcase.to_sym,
+          title: fields[:title],
+          transaction_date: fields[:transaction_date],
+          transaction_type: fields[:transaction_type].downcase.to_sym,
           from_account: fields[:from_account],
           to_account: fields[:to_account],
-          amount: fields[:amount_1],
+          amount: Nostra::AccountHelper.amount_to_cents(fields[:amount_1]),
           amount_2: fields[:amount_2],
-          notes: fields[:notes]
+          description: fields[:description]
         }
 
-        unless fields[:type] == "Transfer"
+        unless fields[:transaction_type] == "Transfer"
           transaction_data.merge!({category: fields[:to_account]})
         end
 
@@ -36,6 +40,7 @@ module Nostra
 
       data_for_transactions
     end
+
 
     def self.strip_bom_characters(csv_file)
       bom_chars = "\xEF\xBB\xBF"
@@ -57,23 +62,24 @@ module Nostra
     def self.fields_for_transaction(transaction_string)
       fields = transaction_string.split(',')
 
-      date = fields[0]
-      type = fields[1]
+      transaction_date = Nostra::DateHelper.parse_date(fields[0])
+      transaction_type = fields[1]
       from_account = fields[2]
       to_account = fields[3]
       amount_1 = fields[4]
       amount_2 = fields[6]
-      notes = fields[9]
+      description = fields[9]
+      title = "#{from_account}_#{to_account} #{transaction_type} #{amount_1} #{transaction_date}"
 
-      # TODO: implement dry/rom structs
       {
-        date: date,
-        type: type,
+        title: title,
+        transaction_date: transaction_date,
+        transaction_type: transaction_type,
         from_account: from_account,
         to_account: to_account,
         amount_1: amount_1,
         amount_2: amount_2,
-        notes: notes
+        description: description
       }
     end
   end

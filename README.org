@@ -24,7 +24,4 @@
 
 ** Roadmap  
 
-   Please see [[./BACKLOG.org]] for general dumping grounds
-
-   - Implement db using ROM
-   - Ability to project future balances, taking in to account recurring transactions
+   Please see [[./BACKLOG.org]]
